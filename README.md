@@ -59,7 +59,7 @@ cd talentrix-bot
 
 ## Installing Dependencies
 ```sh
-npm install
+npm install puppeteer fs @faker-js/faker
 ```
 
 ## Configuration
