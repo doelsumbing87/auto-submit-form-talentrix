@@ -1,86 +1,118 @@
-# Talentrix Bot
+# Talentrix Auto Submit Bot
 
-Talentrix Bot adalah bot otomatis berbasis Selenium yang dirancang untuk membantu mengelola dan mengotomatisasi tugas tertentu secara efisien. Proyek ini berjalan di lingkungan Linux dengan dukungan Google Chrome dan ChromeDriver.
+## 📌 Introduction
+Talentrix Auto Submit Bot is an automated script built using **Node.js & Puppeteer** to streamline the wallet submission process for Talentrix Airdrop. The bot automatically fills out the form with a random name and wallet address and submits it efficiently.
 
-## 🚀 Fitur
-- **Otomasi penuh** menggunakan Selenium
-- **Dukungan Multi-Threading** untuk performa maksimal
-- **Logging dan Error Handling** bawaan
-- **Mudah dikonfigurasi** dengan `.env` file
+---
 
-## 📌 Prasyarat
-Sebelum menjalankan bot ini, pastikan sistem telah memiliki:
-- **Linux VPS / Ubuntu 20.04+**
-- **Python 3.12+**
-- **Google Chrome (Versi terbaru)**
-- **ChromeDriver (Sesuai versi Chrome)**
-- **Git & Virtual Environment**
+## ⚡ Features
+- **Automated Form Submission**: Fills and submits forms without manual input.
+- **Random Name Generation**: Uses `@faker-js/faker` to generate unique names.
+- **Error Handling**: Captures errors and logs them.
+- **Screenshots on Failure**: Saves screenshots for debugging purposes.
+- **Configurable Wait Time**: Ensures compliance with request rate limits.
 
-## ⚙️ Instalasi
-Ikuti langkah-langkah berikut untuk menginstal bot di VPS:
+---
 
-### 1️⃣ Clone Repository
-```bash
+## 🔧 Requirements
+Ensure you have the following dependencies installed before running the bot:
+
+### **System Requirements**
+- **Operating System**: Ubuntu / Debian / macOS / Windows
+- **Node.js**: v18+ (Recommended: v20+)
+- **npm**: v8+
+
+### **Dependencies**
+The bot requires the following Node.js packages:
+- **puppeteer**: Automates browser interactions.
+- **@faker-js/faker**: Generates random names.
+- **fs**: Handles file system operations.
+
+To install dependencies, run:
+```sh
+npm install
+```
+
+---
+
+## 🚀 Installation Guide
+
+### **1️⃣ Clone the Repository**
+```sh
 git clone https://github.com/doelsumbing87/talentrix-bot.git
 cd talentrix-bot
 ```
 
-### 2️⃣ Buat Virtual Environment & Install Dependencies
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+### **2️⃣ Install Dependencies**
+```sh
+npm install
 ```
 
-### 3️⃣ Install Google Chrome & ChromeDriver
-```bash
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-apt install ./google-chrome-stable_current_amd64.deb -y
-CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d'.' -f1)
-wget https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/linux64/chromedriver-linux64.zip
-unzip chromedriver-linux64.zip
-mv chromedriver-linux64/chromedriver /usr/local/bin/
-chmod +x /usr/local/bin/chromedriver
+### **3️⃣ Prepare Wallet Data**
+Create a file named `wallets.txt` in the root directory and add wallet addresses (one per line):
 ```
+.........
+.........
+.........
 
-## ▶️ Menjalankan Bot
-
-### **Jalankan bot dengan perintah berikut:**
-```bash
-source venv/bin/activate
-python bot.py
+...
 ```
-
-Jika ingin menjalankan bot di **background**:
-```bash
-nohup python bot.py &
-```
-
-Untuk melihat log bot:
-```bash
-tail -f nohup.out
-```
-
-## 🛠 Troubleshooting
-Jika mengalami error, cek langkah-langkah berikut:
-- **Cek versi Chrome & ChromeDriver:**
-  ```bash
-  google-chrome --version
-  chromedriver --version
-  ```
-- **Pastikan virtual environment aktif sebelum menjalankan bot:**
-  ```bash
-  source venv/bin/activate
-  ```
-- **Jika error `chromedriver not found`, pastikan telah menginstal dengan benar.**
-
-## 💡 Kontribusi
-Jika ingin berkontribusi, silakan fork repository ini dan buat pull request dengan perubahan yang diusulkan.
-
-## 📜 Lisensi
-Proyek ini dilisensikan di bawah **MIT License**. Silakan baca `LICENSE` untuk detail lebih lanjut.
 
 ---
 
-🚀 **Talentrix Bot - Automate Your Workflow, Enhance Your Productivity!**
+## 🏃 Running the Bot
+
+To start the bot, run:
+```sh
+node bot.js
+```
+
+The bot will:
+1. Read wallet addresses from `wallets.txt`
+2. Generate a random name for each wallet
+3. Submit the form on the Talentrix Airdrop page
+4. Log successes and failures
+5. Take screenshots of errors (if any) in `screenshots/`
+
+---
+
+## 📜 Logging & Debugging
+- All logs are saved in `log.txt`.
+- Screenshots of failed submissions are stored in the `screenshots/` directory.
+
+---
+
+## 🔥 Troubleshooting
+**1. Puppeteer installation issues?**  
+Try installing Chrome manually:
+```sh
+apt update && apt install -y chromium-browser
+```
+Then run Puppeteer with:
+```sh
+PUPPETEER_EXECUTABLE_PATH="/usr/bin/chromium-browser" node bot.js
+```
+
+**2. Error: `No element found for selector`?**  
+The page might have changed. Ensure the form structure is still the same.
+
+---
+
+## 📄 License
+This project is licensed under the **MIT License**. Feel free to modify and distribute it.
+
+---
+
+## 🤝 Contributing
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -m "Add new feature"`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a Pull Request.
+
+---
+
+## 📩 Contact
+For issues or questions, feel free to reach out:
+- **GitHub**: [@doelsumbing87](https://github.com/doelsumbing87)
 
