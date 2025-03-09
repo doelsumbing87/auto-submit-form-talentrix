@@ -88,5 +88,5 @@ node bot.js
 This project is for educational purposes only. Use at your own risk.
 
 ---
-🚀 Developed by [Doel](https://github.com/doelsumbing87)
+🚀 Developed by [ABBEEY](https://github.com/doelsumbing87)
 
